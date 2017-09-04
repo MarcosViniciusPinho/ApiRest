@@ -34,7 +34,7 @@ public class UsuarioResource {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Usuario> delete(@PathVariable(value = "id") Long id){
+    public ResponseEntity<Void> delete(@PathVariable(value = "id") Long id){
         Usuario usuario = this.usuarioService.findById(id);
         if(usuario == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
