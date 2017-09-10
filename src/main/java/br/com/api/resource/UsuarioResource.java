@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,12 +18,12 @@ public class UsuarioResource {
     private UsuarioService usuarioService;
 
     @PostMapping
-    public ResponseEntity<Usuario> create(@RequestBody Usuario usuario){
+    public ResponseEntity<Usuario> create(@Valid @RequestBody Usuario usuario){
         return new ResponseEntity<>(this.usuarioService.create(usuario), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<Usuario> update(@RequestBody Usuario usuario){
+    public ResponseEntity<Usuario> update(@Valid @RequestBody Usuario usuario){
         return new ResponseEntity<>(this.usuarioService.update(usuario), HttpStatus.OK);
     }
 
