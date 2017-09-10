@@ -1,9 +1,9 @@
-package br.com.rest.service.impl;
+package br.com.api.service.impl;
 
-import br.com.rest.entity.Usuario;
-import br.com.rest.repository.UsuarioRepository;
-import br.com.rest.service.UsuarioService;
-import br.com.rest.service.exception.UsuarioNaoEncontradoException;
+import br.com.api.entity.Usuario;
+import br.com.api.repository.UsuarioRepository;
+import br.com.api.service.UsuarioService;
+import br.com.api.service.exception.UsuarioNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

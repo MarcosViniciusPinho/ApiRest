@@ -1,6 +1,6 @@
-package br.com.rest.repository;
+package br.com.api.repository;
 
-import br.com.rest.entity.Usuario;
+import br.com.api.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

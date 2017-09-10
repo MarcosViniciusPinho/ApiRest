@@ -1,6 +1,6 @@
-package br.com.rest.service;
+package br.com.api.service;
 
-import br.com.rest.entity.Usuario;
+import br.com.api.entity.Usuario;
 import java.util.List;
 
 public interface UsuarioService {

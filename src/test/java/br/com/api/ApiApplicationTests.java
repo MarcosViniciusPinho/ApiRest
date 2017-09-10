@@ -1,4 +1,4 @@
-package br.com.rest;
+package br.com.api;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package br.com.rest.service.exception;
+package br.com.api.service.exception;
 
 public class UsuarioNaoEncontradoException extends RuntimeException {
 

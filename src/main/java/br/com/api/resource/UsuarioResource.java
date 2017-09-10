@@ -1,7 +1,7 @@
-package br.com.rest.resource;
+package br.com.api.resource;
 
-import br.com.rest.entity.Usuario;
-import br.com.rest.service.UsuarioService;
+import br.com.api.entity.Usuario;
+import br.com.api.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

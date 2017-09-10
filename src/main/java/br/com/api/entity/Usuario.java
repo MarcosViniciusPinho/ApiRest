@@ -1,4 +1,4 @@
-package br.com.rest.entity;
+package br.com.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.hibernate.validator.constraints.NotBlank;
