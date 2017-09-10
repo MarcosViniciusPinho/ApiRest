@@ -6,11 +6,18 @@ import java.util.List;
 public interface UsuarioService {
 
     /**
-     * Cria ou altera um usuario
+     * Cria um usuario
      * @param usuario usuario
      * @return Usuario
      */
-    Usuario createOrUpdate(Usuario usuario);
+    Usuario create(Usuario usuario);
+
+    /**
+     * Altera um usuario
+     * @param usuario usuario
+     * @return Usuario
+     */
+    Usuario update(Usuario usuario);
 
     /**
      * Busca um usuario

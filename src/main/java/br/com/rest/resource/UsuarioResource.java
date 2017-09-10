@@ -18,12 +18,12 @@ public class UsuarioResource {
 
     @PostMapping
     public ResponseEntity<Usuario> create(@RequestBody Usuario usuario){
-        return new ResponseEntity<>(this.usuarioService.createOrUpdate(usuario), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.usuarioService.create(usuario), HttpStatus.CREATED);
     }
 
     @PutMapping
     public ResponseEntity<Usuario> update(@RequestBody Usuario usuario){
-        return new ResponseEntity<>(this.usuarioService.createOrUpdate(usuario), HttpStatus.OK);
+        return new ResponseEntity<>(this.usuarioService.update(usuario), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")

@@ -81,4 +81,9 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
+    public Usuario getNovoUsuario(){
+        this.setId(null);
+        return this;
+    }
+
 }
