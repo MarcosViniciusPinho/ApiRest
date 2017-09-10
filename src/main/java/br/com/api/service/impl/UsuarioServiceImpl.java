@@ -3,10 +3,12 @@ package br.com.api.service.impl;
 import br.com.api.entity.Usuario;
 import br.com.api.repository.UsuarioRepository;
 import br.com.api.service.UsuarioService;
+import br.com.api.service.exception.ObjectNotFoundException;
 import br.com.api.service.exception.UsuarioNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,9 +30,13 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public Usuario findById(Long id) {
+        List<ObjectNotFoundException> exceptions = new ArrayList<>();
         Usuario usuario = this.usuarioRepository.findOne(id);
         if(usuario == null){
-            throw new UsuarioNaoEncontradoException("O usuário não existe, para este id informado.");
+            exceptions.add(new UsuarioNaoEncontradoException("O usuário não existe, para este id informado."));
+        }
+        if(!exceptions.isEmpty()){
+            throw new ObjectNotFoundException(exceptions);
         }
         return usuario;
     }

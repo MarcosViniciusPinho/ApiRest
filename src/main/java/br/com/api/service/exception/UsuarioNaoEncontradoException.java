@@ -1,9 +1,9 @@
 package br.com.api.service.exception;
 
-public class UsuarioNaoEncontradoException extends RuntimeException {
+public class UsuarioNaoEncontradoException extends ObjectNotFoundException {
 
-    public UsuarioNaoEncontradoException(String mensagem){
-        super(mensagem);
+    public UsuarioNaoEncontradoException(String message){
+        super(message);
     }
 
 }

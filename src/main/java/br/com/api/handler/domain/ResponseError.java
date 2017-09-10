@@ -1,5 +1,7 @@
 package br.com.api.handler.domain;
 
+import br.com.api.service.exception.ObjectNotFoundException;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.validation.ObjectError;
 
 import java.util.ArrayList;
@@ -9,21 +11,15 @@ public class ResponseError {
 
     private int status;
     private String description;
+    @JsonInclude(value = JsonInclude.Include.NON_NULL)
     private String messageException;
     private Long timeMiliseconds;
     private List<String> messagesBusiness;
 
-    public ResponseError(int status, String description, String messageException, Long timeMiliseconds) {
+    public ResponseError(int status, String description, List<String> messagesBusiness, String messageException, Long timeMiliseconds) {
         this.status = status;
         this.description = description;
-        this.messageException = messageException;
-        this.timeMiliseconds = timeMiliseconds;
-    }
-
-    public ResponseError(int status, String description, List<ObjectError> objectErrorList, String messageException, Long timeMiliseconds) {
-        this.status = status;
-        this.description = description;
-        this.messagesBusiness = this.getTransformersObjectsToMessagesBusiness(objectErrorList);
+        this.messagesBusiness = messagesBusiness;
         this.messageException = messageException;
         this.timeMiliseconds = timeMiliseconds;
     }
@@ -48,9 +44,15 @@ public class ResponseError {
         return messagesBusiness;
     }
 
-    private List<String> getTransformersObjectsToMessagesBusiness(List<ObjectError> objectErrorList){
+    public static List<String> getTransformersObjectsToMessagesBusiness(List<ObjectError> objectErrorList){
         List<String> lista = new ArrayList<>();
         objectErrorList.forEach(error -> lista.add(error.getDefaultMessage()));
+        return lista;
+    }
+
+    public static List<String> getTransformersObjectsNotFoundToMessagesBusiness(List<ObjectNotFoundException> exceptionsList){
+        List<String> lista = new ArrayList<>();
+        exceptionsList.forEach(error -> lista.add(error.getMessage()));
         return lista;
     }
 }
