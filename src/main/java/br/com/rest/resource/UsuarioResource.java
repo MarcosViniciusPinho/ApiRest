@@ -40,7 +40,7 @@ public class UsuarioResource {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         this.usuarioService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping
