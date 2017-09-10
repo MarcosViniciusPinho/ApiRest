@@ -17,7 +17,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public Usuario create(Usuario usuario) {
-        return this.usuarioRepository.saveAndFlush(usuario.getNovoUsuario());
+        return this.usuarioRepository.saveAndFlush(usuario.buildNovoUsuario());
     }
 
     @Override

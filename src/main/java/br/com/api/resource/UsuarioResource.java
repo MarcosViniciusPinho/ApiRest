@@ -28,17 +28,11 @@ public class UsuarioResource {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Usuario> findById(@PathVariable(value = "id") Long id){
-        Usuario usuario = this.usuarioService.findById(id);
-        return usuario != null ? new ResponseEntity<>(this.usuarioService.findById(id), HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(this.usuarioService.findById(id), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable(value = "id") Long id){
-        Usuario usuario = this.usuarioService.findById(id);
-        if(usuario == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
         this.usuarioService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
