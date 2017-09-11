@@ -1,6 +1,7 @@
 package br.com.api.handler;
 
 import br.com.api.handler.domain.ResponseError;
+import br.com.api.service.exception.NullParameterException;
 import br.com.api.service.exception.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,11 @@ public class ResourceExceptionHandler {
     public ResponseEntity<ResponseError> handlerValidateAtributes(MethodArgumentNotValidException e){
         List<String> errors = ResponseError.getTransformersObjectsToMessagesBusiness(e.getBindingResult().getAllErrors());
         return this.getResponse(HttpStatus.BAD_REQUEST, errors, e.getMessage());
+    }
+
+    @ExceptionHandler(NullParameterException.class)
+    public ResponseEntity<ResponseError> handlerNullParameterException(NullParameterException e){
+        return this.getResponse(HttpStatus.INTERNAL_SERVER_ERROR, null, e.getMessage());
     }
 
     private ResponseEntity<ResponseError> getResponse(HttpStatus status, List<String> errors, String messageException){

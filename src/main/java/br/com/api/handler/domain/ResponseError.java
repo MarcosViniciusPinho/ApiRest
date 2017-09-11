@@ -7,6 +7,9 @@ import org.springframework.validation.ObjectError;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe responsável por enviar as informações dos detalhes dos erros para o client.
+ */
 public class ResponseError {
 
     private int status;
@@ -14,6 +17,7 @@ public class ResponseError {
     @JsonInclude(value = JsonInclude.Include.NON_NULL)
     private String messageException;
     private Long timeMiliseconds;
+    @JsonInclude(value = JsonInclude.Include.NON_NULL)
     private List<String> messagesBusiness;
 
     public ResponseError(int status, String description, List<String> messagesBusiness, String messageException, Long timeMiliseconds) {
