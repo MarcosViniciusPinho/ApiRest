@@ -4,6 +4,7 @@ import br.com.api.entity.Usuario;
 import br.com.api.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,17 +18,19 @@ public class UsuarioResource {
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping
+    @PostMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+        consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Usuario> create(@Valid @RequestBody Usuario usuario){
         return new ResponseEntity<>(this.usuarioService.create(usuario), HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PutMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Usuario> update(@Valid @RequestBody Usuario usuario){
         return new ResponseEntity<>(this.usuarioService.update(usuario), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Usuario> findById(@PathVariable(value = "id") Long id){
         return new ResponseEntity<>(this.usuarioService.findById(id), HttpStatus.OK);
     }
@@ -38,7 +41,7 @@ public class UsuarioResource {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping
+    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<List<Usuario>> findAll(){
         return new ResponseEntity<>(this.usuarioService.findAll(), HttpStatus.OK);
     }
